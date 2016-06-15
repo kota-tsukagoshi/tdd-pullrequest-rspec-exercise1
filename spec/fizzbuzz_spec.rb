@@ -1,17 +1,30 @@
 require 'spec_helper'
 require 'fizzbuzz'
 
-# TODO 4. 3の倍数場合はFizzを返すこと
-# TODO 5. 5の倍数場合はBuzzを返すこと
-# TODO 6. 3と5の倍数場は合FizzBuzzを返すこと
-# TODO 7. 1から100の数列をfizzbuzz配列に変換すること
-
-describe 'FizzBuzz#say' do
+describe 'FizzBuzz#convert' do
   subject { FizzBuzz.new }
 
-  context '3の倍数でも5の倍数でもない場合' do
-    it "数字を返す_例2" do
-      expect( subject.say(2) ).to eq '2'
+  context '3の倍数の場合' do
+    [3,6].each do |num|
+      it "Fizzを返す_例#{num}" do
+        expect( subject.convert(num) ).to eq 'Fizz'
+      end
+    end
+  end
+
+  context '5の倍数の場合' do
+    [5,10].each do |num|
+      it "Buzzを返す_例#{num}" do
+        expect( subject.convert(num) ).to eq 'Buzz'
+      end
+    end
+  end
+
+  context '3 or 5の倍数の場合' do
+    [15,30].each do |num|
+      it "Buzzを返す_例#{num}" do
+        expect( subject.convert(num) ).to eq 'FizzBuzz'
+      end
     end
   end
 end
